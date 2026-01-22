@@ -9,13 +9,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/testDoPost")
+@WebServlet("/TestDoPost")
 public class TestDoPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public TestDoPost() {
-		super();
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -38,5 +34,4 @@ public class TestDoPost extends HttpServlet {
 		out.println("<h2>Đây là kết quả của phương thức doPOST</h2>");
 		out.println("<p>Dữ liệu nhận được: <b>" + data + "</b></p>");
 	}
-
 }
