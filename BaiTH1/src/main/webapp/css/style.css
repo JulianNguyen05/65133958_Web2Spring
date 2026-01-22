@@ -5,7 +5,7 @@
     --card-bg: #1e293b;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --accent: #38bdf8;
+    --accent: #38bdf8;       /* Màu xanh neon chủ đạo */
     --accent-hover: #0ea5e9;
     --glass: rgba(30, 41, 59, 0.7);
 }
@@ -25,6 +25,10 @@ body {
         radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
 }
+
+/* =========================================
+   PHẦN 1: PORTFOLIO STYLES
+   ========================================= */
 
 .portfolio-container {
     display: grid;
@@ -138,3 +142,83 @@ body {
 }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+/* =========================================
+   PHẦN 2: BMI CALCULATOR STYLES
+   ========================================= */
+
+/* Container riêng cho Form BMI (tương tự style .card) */
+.form-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px; /* Giới hạn chiều rộng để đẹp trên PC */
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Input Styles */
+.input-group { text-align: left; margin-bottom: 20px; }
+.input-group label { display: block; color: var(--text-muted); margin-bottom: 8px; font-size: 14px; }
+
+.custom-input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(15, 23, 42, 0.6); /* Nền tối hơn card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.custom-input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+
+/* Button Style */
+.btn-calculate {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--accent), #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+.btn-calculate:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4); }
+
+/* --- TRANG KẾT QUẢ BMI --- */
+
+.result-circle {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    border: 5px solid var(--accent);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bmi-number { font-size: 48px; font-weight: 800; color: white; }
+.bmi-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+.status-text { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.advice-text { color: var(--text-muted); line-height: 1.6; font-size: 15px; }
+
+/* Các màu trạng thái sức khỏe */
+.status-thin { border-color: #facc15; color: #facc15; } /* Vàng */
+.status-normal { border-color: #4ade80; color: #4ade80; } /* Xanh lá */
+.status-fat { border-color: #f87171; color: #f87171; } /* Đỏ nhạt */
+.status-obese { border-color: #ef4444; color: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); } /* Đỏ đậm */
+
+@keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
