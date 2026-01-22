@@ -83,7 +83,7 @@ public class BMI extends HttpServlet {
 			out.println("<p>Chiều cao: " + heightCm + " cm | Cân nặng: " + weight + " kg</p>");
 			out.println("<h3>Chỉ số BMI: " + String.format("%.2f", bmi) + "</h3>");
 			out.println("<h2 style='color:" + color + "'>Phân loại: " + phanLoai + "</h2>");
-			out.println("<br><a href='BMI'>Quay lại tính tiếp</a>"); // Link quay về doGet
+			out.println("<br><a href='BMI'>Quay lại tính tiếp</a>");
 			out.println("</div></body></html>");
 
 		} catch (Exception e) {
