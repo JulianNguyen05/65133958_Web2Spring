@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;       /* Màu xanh neon chủ đạo */
+    --accent-hover: #0ea5e9;
+    --glass: rgba(30, 41, 59, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+}
+
+/* =========================================
+   PHẦN 1: PORTFOLIO STYLES
+   ========================================= */
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* --- CỘT TRÁI: PROFILE CARD --- */
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-wrapper {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(45deg, var(--accent), #8b5cf6);
+}
+
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--card-bg);
+}
+
+.name { font-size: 28px; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.5px; }
+.role { color: var(--accent); font-weight: 600; margin-bottom: 20px; display: block; }
+
+.social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+.social-btn {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted);
+    transition: 0.3s;
+    text-decoration: none;
+}
+.social-btn:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+
+.contact-details { text-align: left; font-size: 14px; color: var(--text-muted); space-y: 10px; }
+.contact-row { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.contact-row i { color: var(--accent); width: 20px; }
+
+/* --- CỘT PHẢI: CONTENT --- */
+.content-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-title {
+    font-size: 20px; font-weight: 700; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+}
+.section-title i { color: var(--accent); }
+
+/* Timeline cho kinh nghiệm */
+.timeline-item {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255,255,255,0.1);
+    margin-bottom: 25px;
+}
+.timeline-item::before {
+    content: ''; position: absolute; left: -6px; top: 5px;
+    width: 10px; height: 10px; background: var(--accent);
+    border-radius: 50%; box-shadow: 0 0 10px var(--accent);
+}
+.timeline-item h4 { font-size: 16px; margin-bottom: 5px; color: white; }
+.timeline-item .time { font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
+.timeline-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* Skills Grid */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-tag {
+    background: rgba(255,255,255,0.05);
+    padding: 8px 16px; border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(56, 189, 248, 0.1); }
+
+/* Responsive */
+@media (max-width: 850px) {
+    .portfolio-container { grid-template-columns: 1fr; }
+    .profile-card { text-align: center; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

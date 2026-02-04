@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%
+    String user = request.getParameter("username");
+    String pass = request.getParameter("password");
 
-</body>
-</html>
+    if (user == null) user = "";
+    if (pass == null) pass = "";
+
+    if ("ABC".equals(user) && "MNK".equals(pass)) {
+        response.sendRedirect("UserProfile.html");
+        
+    } else {
+        response.sendRedirect("Login.html");
+    }
+%>
