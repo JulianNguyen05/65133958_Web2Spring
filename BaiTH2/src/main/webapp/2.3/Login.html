@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trang Đăng Nhập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Hệ Thống</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h2>Đăng nhập hệ thống</h2>
-    <form action="Login.jsp" method="post">
-        <table border="0">
-            <tr>
-                <td>Tên đăng nhập:</td>
-                <td><input type="text" name="username"></td>
-            </tr>
-            <tr>
-                <td>Mật khẩu:</td>
-                <td><input type="password" name="password"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+
+    <div class="card login-card">
+        
+        <div class="login-header">
+            <h2>Welcome Back!</h2>
+            <p>Vui lòng đăng nhập để tiếp tục</p>
+        </div>
+
+        <form action="Login.jsp" method="post">
+            <div class="form-group">
+                <label class="form-label"><i class="fa-solid fa-user"></i> Tên đăng nhập</label>
+                <input type="text" name="username" class="form-input" placeholder="Nhập username (ABC)..." required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label"><i class="fa-solid fa-lock"></i> Mật khẩu</label>
+                <input type="password" name="password" class="form-input" placeholder="Nhập mật khẩu (MNK)..." required>
+            </div>
+
+            <button type="submit" class="btn-login">
+                Đăng Nhập <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+            </button>
+        </form>
+
+    </div>
+
 </body>
 </html>
