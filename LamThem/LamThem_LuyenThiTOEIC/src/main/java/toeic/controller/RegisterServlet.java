@@ -12,27 +12,27 @@ import toeic.model.User;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-		String fullName = request.getParameter("fullName");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+    String fullName = request.getParameter("fullName");
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
 
-		if ("admin".equalsIgnoreCase(username)) {
-			response.sendRedirect("register.jsp?error=admin");
-			return;
-		}
+    if ("admin".equalsIgnoreCase(username)) {
+      response.sendRedirect("register.jsp?error=admin");
+      return;
+    }
 
-		User newUser = new User(username, password, fullName, "USER");
-		boolean isSuccess = UserDAO.register(newUser);
+    User newUser = new User(username, password, fullName, "USER");
+    boolean isSuccess = UserDAO.register(newUser);
 
-		if (isSuccess) {
-			response.sendRedirect("login.jsp?registerSuccess=true");
-		} else {
-			response.sendRedirect("register.jsp?error=failed");
-		}
-	}
+    if (isSuccess) {
+      response.sendRedirect("login.jsp?registerSuccess=true");
+    } else {
+      response.sendRedirect("register.jsp?error=failed");
+    }
+  }
 }
