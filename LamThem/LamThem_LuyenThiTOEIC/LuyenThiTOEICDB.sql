@@ -17,6 +17,7 @@ CREATE TABLE exams (
     exam_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(200) NOT NULL, -- Ví dụ: TOEIC Economy Vol 1 - Test 01
     description TEXT,
+    file_name VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
