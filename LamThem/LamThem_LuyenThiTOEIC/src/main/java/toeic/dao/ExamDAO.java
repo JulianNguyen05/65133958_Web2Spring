@@ -40,4 +40,30 @@ public class ExamDAO {
 		}
 		return list;
 	}
+
+	public boolean insertExam(String title, String description, String fileName) {
+		String query = "INSERT INTO exams (title, description, file_name) VALUES (?, ?, ?)";
+		boolean isSuccess = false;
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			if (conn == null)
+				return false;
+
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, title);
+			ps.setString(2, description);
+			ps.setString(3, fileName);
+
+			int row = ps.executeUpdate();
+			if (row > 0) {
+				isSuccess = true;
+			}
+
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isSuccess;
+	}
 }
