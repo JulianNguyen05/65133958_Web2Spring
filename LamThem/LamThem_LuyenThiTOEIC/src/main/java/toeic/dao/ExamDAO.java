@@ -66,4 +66,46 @@ public class ExamDAO {
 		}
 		return isSuccess;
 	}
+
+	// Hàm xóa đề thi
+	public boolean deleteExam(int examId) {
+		String query = "DELETE FROM exams WHERE exam_id = ?";
+		try {
+			Connection conn = DBConnection.getConnection();
+			if (conn == null)
+				return false;
+
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, examId);
+			int row = ps.executeUpdate();
+			conn.close();
+
+			return row > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	// Hàm cập nhật đề thi (chỉ sửa Tên và Mô tả, giữ nguyên file JSON)
+	public boolean updateExam(int examId, String title, String description) {
+		String query = "UPDATE exams SET title = ?, description = ? WHERE exam_id = ?";
+		try {
+			Connection conn = DBConnection.getConnection();
+			if (conn == null)
+				return false;
+
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, title);
+			ps.setString(2, description);
+			ps.setInt(3, examId);
+			int row = ps.executeUpdate();
+			conn.close();
+
+			return row > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

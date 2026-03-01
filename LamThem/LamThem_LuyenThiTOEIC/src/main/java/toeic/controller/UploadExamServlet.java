@@ -43,19 +43,21 @@ public class UploadExamServlet extends HttpServlet {
 			ExamDAO dao = new ExamDAO();
 			boolean isInserted = dao.insertExam(title, description, fileName);
 
+			// SỬA: Dùng getSession() thay vì setAttribute trực tiếp lên request
 			if (isInserted) {
-				request.setAttribute("message", "Thêm đề thi thành công!");
-				request.setAttribute("msgType", "success");
+				request.getSession().setAttribute("message", "Thêm đề thi thành công!");
+				request.getSession().setAttribute("msgType", "success");
 			} else {
-				request.setAttribute("message", "Lỗi khi lưu vào Database.");
-				request.setAttribute("msgType", "danger");
+				request.getSession().setAttribute("message", "Lỗi khi lưu vào Database.");
+				request.getSession().setAttribute("msgType", "danger");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("message", "Lỗi khi upload file: " + e.getMessage());
-			request.setAttribute("msgType", "danger");
+			request.getSession().setAttribute("message", "Lỗi khi upload file: " + e.getMessage());
+			request.getSession().setAttribute("msgType", "danger");
 		}
 
-		request.getRequestDispatcher("/admin/home.jsp").forward(request, response);
+		// SỬA CỰC KỲ QUAN TRỌNG: Dùng sendRedirect để ép trình duyệt gọi GET
+		response.sendRedirect(request.getContextPath() + "/admin/home");
 	}
 }

@@ -12,6 +12,22 @@
 </head>
 <body class="bg-light">
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">📚 TOEIC System</a>
+        
+        <div class="d-flex align-items-center">
+            <span class="text-white me-3">
+                Xin chào, <strong>${not empty sessionScope.sessionUser.username ? sessionScope.sessionUser.username : 'Học viên'}</strong>!
+            </span>
+            
+            <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger btn-sm fw-bold">
+                🚪 Đăng xuất
+            </a>
+        </div>
+    </div>
+</nav>
+
 <div class="container mt-5">
     <h2 class="text-center mb-4">Thư viện đề thi</h2>
     

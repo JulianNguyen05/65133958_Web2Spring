@@ -6,108 +6,112 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* GIAO DIỆN CHUẨN TOEIC CBT */
-        body { height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+        body { height: 100vh; overflow: hidden; display: flex; flex-direction: column; background-color: #f8f9fa; }
         
-        /* 1. Header: Timer và nút điều hướng */
+        /* Header */
         .exam-header {
-            height: 60px; background-color: #f0f2f5; border-bottom: 2px solid #ddd;
+            height: 60px; background-color: #ffffff; border-bottom: 2px solid #ddd;
             display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .timer-box { font-weight: bold; color: #d9534f; font-size: 1.2rem; }
 
-        /* 2. Main Content: Khu vực làm bài */
-        .exam-container {
-            flex: 1; display: flex; overflow: hidden; /* Quan trọng để chia cột */
-        }
+        /* Main Content */
+        .exam-container { flex: 1; display: flex; overflow: hidden; }
 
-        /* Cột trái: Hiển thị đoạn văn (Part 6, 7) */
-        .left-pane {
-            width: 50%; border-right: 1px solid #ccc; padding: 20px;
-            overflow-y: auto; background-color: #fff;
-            display: none; /* Mặc định ẩn (cho Part 5) */
-        }
-
-        /* Cột phải: Hiển thị câu hỏi */
-        .right-pane {
-            width: 50%; padding: 20px; overflow-y: auto; background-color: #fafafa;
-            flex: 1; /* Tự mở rộng nếu cột trái ẩn */
-        }
+        .left-pane { width: 50%; border-right: 1px solid #ccc; padding: 25px; overflow-y: auto; background-color: #fff; display: none; }
+        .right-pane { width: 50%; padding: 25px; overflow-y: auto; background-color: #fafafa; flex: 1; }
         
-        /* Style cho đoạn văn */
-        .reading-passage { font-family: "Times New Roman", serif; font-size: 1.1rem; line-height: 1.6; white-space: pre-wrap; }
+        .reading-passage { font-family: "Times New Roman", serif; font-size: 1.15rem; line-height: 1.6; white-space: pre-wrap; color: #333; }
 
-        /* Style cho câu hỏi */
-        .question-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .option-label { display: block; margin: 10px 0; cursor: pointer; padding: 8px; border: 1px solid #eee; border-radius: 5px; }
-        .option-label:hover { background-color: #e9ecef; }
-        input[type="radio"] { margin-right: 10px; }
+        /* Nút đáp án */
+        .question-box { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
+        .option-label { 
+            display: block; margin: 12px 0; cursor: pointer; padding: 15px; font-size: 1.1rem;
+            border: 2px solid #eee; border-radius: 8px; transition: all 0.2s ease-in-out;
+            background-color: #fff;
+        }
+        .option-label:hover { background-color: #f1f3f5; border-color: #ced4da; }
+        
+        /* Hiệu ứng khi được chọn */
+        .option-label.selected { background-color: #d1e7dd; border-color: #198754; color: #0f5132; font-weight: 500; }
 
-        /* Footer điều hướng câu hỏi */
+        /* Footer */
         .exam-footer {
             height: 60px; background: #343a40; color: white;
-            display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
+            display: flex; align-items: center; justify-content: center; padding: 0 20px;
         }
     </style>
 </head>
 <body>
 
-<div class="exam-header">
-    <div><strong>TOEIC Reading Test</strong></div>
-    <div class="timer-box">⏱ <span id="timeDisplay">75:00</span></div>
-    <div><button class="btn btn-outline-primary btn-sm">Mark for Review</button></div>
+<div class="exam-header" id="examHeader">
+    <div><strong class="fs-5 text-primary">TOEIC Reading Test</strong></div>
+    <div class="timer-box">⏱ <span id="timeDisplay">20:00</span></div>
+    <div>
+        <button class="btn btn-danger btn-sm px-3 fw-bold" onclick="forceSubmit()">Kết thúc bài thi</button>
+    </div>
 </div>
 
-<div class="exam-container">
+<div class="exam-container" id="examContainer">
     <div id="leftPane" class="left-pane">
-        <div class="alert alert-info">Refer to the following text:</div>
-        <div id="passageText" class="reading-passage">
-            </div>
+        <div class="alert alert-info fw-bold">Refer to the following text:</div>
+        <div id="passageText" class="reading-passage"></div>
     </div>
 
     <div id="rightPane" class="right-pane">
         <div class="question-box">
-            <h5 id="questionNumber">Question 101</h5>
-            <p id="questionText" class="lead fw-bold">Loading...</p>
-            <div id="optionsArea">
-                </div>
+            <h5 id="questionNumber" class="text-primary fw-bold mb-3">Question 101</h5>
+            <p id="questionText" class="lead fw-bold mb-4">Loading...</p>
+            <div id="optionsArea"></div>
         </div>
     </div>
 </div>
 
-<div class="exam-footer">
-    <button class="btn btn-secondary" onclick="prevQuestion()">⬅ Back</button>
-    <span id="progressText">Question 1 of 100</span>
-    <button class="btn btn-primary" onclick="nextQuestion()">Next ➡</button>
+<div class="exam-footer" id="examFooter">
+    <span id="progressText" class="fs-5 fw-bold">Question 1 of 100</span>
 </div>
+
+
+<div id="reviewScreen" class="container mt-4" style="display: none; height: 100vh; overflow-y: auto; padding-bottom: 50px;">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white text-center py-4">
+            <h2 class="mb-0">🎉 Hoàn thành bài thi!</h2>
+        </div>
+        <div class="card-body p-4">
+            <h3 class="text-center mb-4">Điểm số: <span id="finalScore" class="text-danger fs-1 fw-bold">0</span> / <span id="totalQuestions" class="fs-2">0</span></h3>
+            
+            <div class="text-center mb-5">
+                <a href="${pageContext.request.contextPath}/home" class="btn btn-primary btn-lg px-5 rounded-pill shadow-sm">🏠 Về thư viện đề thi</a>
+            </div>
+
+            <hr class="mb-4">
+            <h4 class="mb-4 text-secondary"><i class="bi bi-card-checklist"></i> Chi tiết đáp án:</h4>
+            
+            <div id="reviewContent"></div> 
+        </div>
+    </div>
+</div>
+
 
 <script type="application/json" id="examDataJson">
     ${examData}
 </script>
 
 <script>
-    var rawData = document.getElementById("examDataJson").textContent; 
-    var questions = []; // Mảng chứa toàn bộ câu hỏi sau khi làm phẳng
+    // --- PHẦN 1: ĐỌC VÀ CHUẨN BỊ DỮ LIỆU ---
+    var rawData = document.getElementById("examDataJson").textContent;
+    var questions = []; 
     var examTitle = "";
 
     try {
         var examObj = JSON.parse(rawData.trim());
         examTitle = examObj.examTitle;
-        
-        // Cập nhật tên đề thi lên giao diện (nếu bạn có ID này trên Header)
-        // document.getElementById("examTitleDisplay").innerText = examTitle;
-
-        // Vòng lặp 1: Đi vào từng Part (Ví dụ: Part 5, Part 6...)
         if (examObj.parts) {
             examObj.parts.forEach(function(part) {
-                
-                // Lấy đoạn văn chung của Part (Dành cho Part 6, 7 nếu có)
                 var partPassage = part.passage || part.groupText || "";
-
-                // Vòng lặp 2: Đi vào từng câu hỏi của Part đó
                 if (part.questions) {
                     part.questions.forEach(function(q) {
-                        
-                        // Chuyển đổi Object options {A: "...", B: "..."} thành Mảng để dễ hiển thị
                         var optArray = [];
                         if (q.options) {
                             optArray.push({ key: 'A', value: q.options.A });
@@ -115,14 +119,11 @@
                             optArray.push({ key: 'C', value: q.options.C });
                             optArray.push({ key: 'D', value: q.options.D });
                         }
-
-                        // Gom tất cả vào mảng chung
                         questions.push({
                             id: q.id,
                             partNumber: part.partNumber,
                             text: q.text,
                             options: optArray,
-                            // Ưu tiên đoạn văn của câu hỏi, nếu không có thì lấy đoạn văn chung của Part
                             groupText: q.passage || q.groupText || partPassage, 
                             correctAnswer: q.correct_answer
                         });
@@ -131,23 +132,19 @@
             });
         }
     } catch (e) {
-        alert("Lỗi đọc dữ liệu JSON! Hãy kiểm tra Console.");
+        alert("Lỗi đọc dữ liệu JSON!");
         console.error(e);
     }
 
     var currentIndex = 0;
-    var userAnswers = {}; // Lưu đáp án người dùng: { 0: 'A', 1: 'C' }
+    var userAnswers = {}; 
+    var isTransitioning = false; // Khóa chống click đúp
 
-    // Hàm hiển thị câu hỏi
+    // --- PHẦN 2: HIỂN THỊ CÂU HỎI ---
     function renderQuestion() {
-        if (!questions || questions.length === 0 || !questions[currentIndex]) {
-            document.getElementById("questionText").innerText = "Chưa load được dữ liệu câu hỏi.";
-            return; 
-        }
-
+        if (!questions || questions.length === 0 || !questions[currentIndex]) return;
         var q = questions[currentIndex];
         
-        // Cập nhật UI
         document.getElementById("questionNumber").innerText = "Question " + q.id;
         document.getElementById("progressText").innerText = "Question " + (currentIndex + 1) + " of " + questions.length;
         
@@ -155,7 +152,7 @@
         var rightPane = document.getElementById("rightPane");
         var passageDiv = document.getElementById("passageText");
 
-        // Xử lý chia đôi màn hình cho Part có đoạn văn
+        // Xử lý chia đôi màn hình
         if (q.groupText && q.groupText.trim() !== "") {
             leftPane.style.display = "block";
             rightPane.style.width = "50%";
@@ -167,56 +164,114 @@
 
         document.getElementById("questionText").innerText = q.text;
 
-        // Xử lý hiển thị đáp án (A, B, C, D) từ mảng mới
+        // In danh sách đáp án dạng nút bấm
         var optionsHtml = "";
         q.options.forEach(function(opt) {
-            var isChecked = userAnswers[currentIndex] === opt.key ? "checked" : "";
-            
-            // Dùng dấu cộng nối chuỗi để tránh xung đột với JSP
-            optionsHtml += '<label class="option-label">' +
-                               '<input type="radio" name="answer" value="' + opt.key + '" onclick="saveAnswer(\'' + opt.key + '\')" ' + isChecked + '> ' +
+            optionsHtml += '<div class="option-label" id="label_' + opt.key + '" onclick="saveAnswer(\'' + opt.key + '\')">' +
                                '<b>' + opt.key + '.</b> ' + opt.value +
-                           '</label>';
+                           '</div>';
         });
         document.getElementById("optionsArea").innerHTML = optionsHtml;
     }
 
-    // Hàm lưu đáp án
+    // --- PHẦN 3: XỬ LÝ CHỌN ĐÁP ÁN & AUTO-NEXT ---
     function saveAnswer(val) {
+        if (isTransitioning) return; // Đang trượt câu thì cấm bấm
+        isTransitioning = true; 
+        
         userAnswers[currentIndex] = val;
-    }
+        document.getElementById('label_' + val).classList.add('selected');
 
-    // Điều hướng Next/Back
-    function nextQuestion() {
-        if (currentIndex < questions.length - 1) {
-            currentIndex++;
-            renderQuestion();
-        } else {
-            if(confirm("Bạn đã làm xong câu cuối. Bạn có muốn nộp bài không?")) {
-                submitExam();
+        setTimeout(function() {
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            } else {
+                if(confirm("Bạn đã hoàn thành câu cuối cùng! Nộp bài nhé?")) {
+                    submitExam();
+                }
             }
-        }
+            isTransitioning = false; 
+        }, 400); // Trễ 0.4s để tạo cảm giác phản hồi
     }
 
-    function prevQuestion() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            renderQuestion();
+    // --- PHẦN 4: CHẤM ĐIỂM VÀ SHOW KẾT QUẢ ---
+    function forceSubmit() {
+        if(confirm("Bạn có chắc chắn muốn kết thúc bài thi ngay bây giờ?")) {
+            submitExam();
         }
     }
     
     function submitExam() {
-        alert("Nộp bài thành công! Dữ liệu sẽ được gửi về server.");
-        console.log("Đáp án đã chọn:", userAnswers);
+        clearInterval(timerInterval); // Dừng đồng hồ
+
+        var correctCount = 0;
+        var reviewHtml = "";
+
+        // Duyệt qua toàn bộ mảng câu hỏi để chấm điểm
+        questions.forEach(function(q, index) {
+            var uAns = userAnswers[index];
+            var cAns = q.correctAnswer;
+            var isCorrect = (uAns === cAns);
+
+            if (isCorrect) correctCount++;
+
+            // Thẻ bọc câu hỏi: Xanh mờ nếu đúng, Đỏ mờ nếu sai
+            var bgClass = isCorrect ? "bg-success bg-opacity-10 border-success" : "bg-danger bg-opacity-10 border-danger";
+            
+            reviewHtml += '<div class="card mb-4 shadow-sm ' + bgClass + '">';
+            reviewHtml += '<div class="card-body">';
+            reviewHtml += '<h5 class="fw-bold">Câu ' + q.id + ': ' + q.text + '</h5>';
+            
+            // In lại 4 đáp án để đối chiếu
+            q.options.forEach(function(opt) {
+                var optStyle = "color: #555; padding: 5px 0;"; 
+                var icon = "";
+
+                if (opt.key === cAns) {
+                    optStyle = "color: #198754; font-weight: bold; padding: 5px 0;"; // Đáp án đúng tô xanh lục
+                    icon = " ✅";
+                } else if (opt.key === uAns && !isCorrect) {
+                    optStyle = "color: #dc3545; font-weight: bold; text-decoration: line-through; padding: 5px 0;"; // Chọn sai gạch bỏ đỏ
+                    icon = " ❌ (Bạn chọn)";
+                }
+
+                reviewHtml += '<div style="' + optStyle + '"><b>' + opt.key + '.</b> ' + opt.value + icon + '</div>';
+            });
+
+            if (!uAns) {
+                reviewHtml += '<div class="text-danger mt-3 fw-bold"><i class="bi bi-exclamation-triangle"></i> Bạn chưa chọn đáp án cho câu này.</div>';
+            }
+
+            reviewHtml += '</div></div>';
+        });
+
+        // Đổ dữ liệu vào UI Kết quả
+        document.getElementById("reviewContent").innerHTML = reviewHtml;
+        document.getElementById("finalScore").innerText = correctCount;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        // Hoán đổi giao diện
+        document.getElementById("examHeader").style.display = "none";
+        document.getElementById("examContainer").style.display = "none";
+        document.getElementById("examFooter").style.display = "none";
+        
+        var reviewScreen = document.getElementById("reviewScreen");
+        reviewScreen.style.display = "block";
+        window.scrollTo(0, 0); // Cuộn lên đầu trang
     }
 
-    // Chạy render lần đầu tiên
-    renderQuestion();
-
-    // Đồng hồ đếm ngược
-    var timeLeft = 75 * 60; 
-    setInterval(function() {
-        if(timeLeft <= 0) return;
+    // --- PHẦN 5: ĐỒNG HỒ ĐẾM NGƯỢC ---
+    renderQuestion(); // Chạy ngay lần đầu tiên
+    
+    var timeLeft = 20 * 60; 
+    var timerInterval = setInterval(function() {
+        if(timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Hết giờ làm bài! Hệ thống tự động nộp bài.");
+            submitExam();
+            return;
+        }
         timeLeft--;
         var m = Math.floor(timeLeft / 60);
         var s = timeLeft % 60;

@@ -1,0 +1,342 @@
+{
+  "examCode": "ETS-2026-TEST-1",
+  "examTitle": "ETS 2026 TOEIC Reading Test 1 Part 5",
+  "parts": [
+    {
+      "partNumber": 5,
+      "instructions": "Select the best answer to complete the sentence.",
+      "questions": [
+        {
+          "id": 101,
+          "text": "The lecture will take place at 6:00 P.M., ------- which attendees may ask questions.",
+          "options": {
+            "A": "across",
+            "B": "after",
+            "C": "inside",
+            "D": "among"
+          },
+          "correct_answer": "B"
+        },
+        {
+          "id": 102,
+          "text": "The ------- antique shop in Pepper Valley will close down next month.",
+          "options": {
+            "A": "last",
+            "B": "lasts",
+            "C": "lasted",
+            "D": "lasting"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 103,
+          "text": "Merryville residents will receive an online ------- about the ongoing bridge construction project.",
+          "options": {
+            "A": "update",
+            "B": "change",
+            "C": "payment",
+            "D": "request"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 104,
+          "text": "As a result of many years leading ------- media organizations, Ms. Ayo was selected for the Dowel Journalism Prize.",
+          "options": {
+            "A": "she",
+            "B": "her",
+            "C": "hers",
+            "D": "herself"
+          },
+          "correct_answer": "B"
+        },
+        {
+          "id": 105,
+          "text": "To stop the ------- of computer viruses, do not open suspicious e-mails.",
+          "options": {
+            "A": "break",
+            "B": "spread",
+            "C": "balance",
+            "D": "surface"
+          },
+          "correct_answer": "B"
+        },
+        {
+          "id": 106,
+          "text": "The hiring manager ------- considered each applicant's résumé and qualifications.",
+          "options": {
+            "A": "caring",
+            "B": "careful",
+            "C": "carefully",
+            "D": "carefulness"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 107,
+          "text": "In October, Mr. Sakamoto will leave for New Zealand ------- will oversee the opening of the new Auckland branch.",
+          "options": {
+            "A": "because",
+            "B": "in addition",
+            "C": "and",
+            "D": "prior to"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 108,
+          "text": "Tarateer Pharmaceuticals is varying its product ------- to include over-the-counter medications.",
+          "options": {
+            "A": "to line",
+            "B": "lining",
+            "C": "lined",
+            "D": "line"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 109,
+          "text": "Dynart, Inc., continuously ------- new ways to reduce its use of plastics.",
+          "options": {
+            "A": "seeks",
+            "B": "seeker",
+            "C": "to seek",
+            "D": "seeking"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 110,
+          "text": "The cash registers at Pirkle Books automatically ------- the remaining inventory of books available.",
+          "options": {
+            "A": "calculate",
+            "B": "calculator",
+            "C": "calculating",
+            "D": "calculation"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 111,
+          "text": "The product team is designing mapping software that can ------- locate underground minerals.",
+          "options": {
+            "A": "infinitely",
+            "B": "sincerely",
+            "C": "precisely",
+            "D": "greatly"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 112,
+          "text": "According to CEO Mayu Yamada, it would not be ------- responsible to expand the warehouse at this time.",
+          "options": {
+            "A": "finance",
+            "B": "financials",
+            "C": "financially",
+            "D": "financing"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 113,
+          "text": "Analysts cannot say with any ------- what the regional demand for electric trucks will be.",
+          "options": {
+            "A": "certainty",
+            "B": "justice",
+            "C": "excellence",
+            "D": "denial"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 114,
+          "text": "As part of its marketing campaign, Elegancia Dishware is ------- soliciting feedback from customers.",
+          "options": {
+            "A": "lightly",
+            "B": "loyally",
+            "C": "actively",
+            "D": "cleanly"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 115,
+          "text": "Rain gardens are intended to ------- water to prevent flooding of local roads.",
+          "options": {
+            "A": "engage",
+            "B": "undergo",
+            "C": "absorb",
+            "D": "overwhelm"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 116,
+          "text": "Theta Industries' training program aims to increase the ------- of its manufacturing systems.",
+          "options": {
+            "A": "producer",
+            "B": "produced",
+            "C": "productive",
+            "D": "productivity"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 117,
+          "text": "The board of directors has voted to award Mr. Mitrakos a bonus for his role ------- obtaining the international contract.",
+          "options": {
+            "A": "in",
+            "B": "at",
+            "C": "except",
+            "D": "apart"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 118,
+          "text": "The finance director gave his approval ------- the project can move forward.",
+          "options": {
+            "A": "along",
+            "B": "furthermore",
+            "C": "cautiously",
+            "D": "so that"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 119,
+          "text": "The newspaper article describes ways job seekers can ------- for having little workplace experience.",
+          "options": {
+            "A": "reply",
+            "B": "capture",
+            "C": "compensate",
+            "D": "accumulate"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 120,
+          "text": "Mr. Ellis and Ms. Barnes were both highly qualified, but ------- got the job.",
+          "options": {
+            "A": "myself",
+            "B": "neither",
+            "C": "anybody",
+            "D": "whoever"
+          },
+          "correct_answer": "B"
+        },
+        {
+          "id": 121,
+          "text": "Ennis Photography purchased all new lighting equipment ------- the high cost.",
+          "options": {
+            "A": "even though",
+            "B": "however",
+            "C": "until",
+            "D": "despite"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 122,
+          "text": "Marburton residents who wish to ------- a home should contact the award-winning team at Kwan Real Estate.",
+          "options": {
+            "A": "seller",
+            "B": "sold",
+            "C": "sell",
+            "D": "selling"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 123,
+          "text": "Maswa Bistro began a ------- agreement with local farmers to purchase a set amount of produce each week.",
+          "options": {
+            "A": "disruptive",
+            "B": "cooperative",
+            "C": "grateful",
+            "D": "concerned"
+          },
+          "correct_answer": "B"
+        },
+        {
+          "id": 124,
+          "text": "The City of Doyle's new downtown parking ------- have been met with opposition by residents and visitors.",
+          "options": {
+            "A": "restricts",
+            "B": "restricted",
+            "C": "restrictions",
+            "D": "restricting"
+          },
+          "correct_answer": "C"
+        },
+        {
+          "id": 125,
+          "text": "The plumbing position requires extensive training, even for those who studied ------- in technical school.",
+          "options": {
+            "A": "diligently",
+            "B": "scientifically",
+            "C": "objectively",
+            "D": "decidedly"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 126,
+          "text": "With its fixed price, Omega Cellular guarantees no phone bill increases for three years. This ------- gives customers peace of mind.",
+          "options": {
+            "A": "assurance",
+            "B": "assuredly",
+            "C": "assuring",
+            "D": "assures"
+          },
+          "correct_answer": "A"
+        },
+        {
+          "id": 127,
+          "text": "As chief analytics officer, Mr. Ko has worked at Lochston Ltd. with great ------- for more than twenty years.",
+          "options": {
+            "A": "deduction",
+            "B": "duplication",
+            "C": "declaration",
+            "D": "dedication"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 128,
+          "text": "Milltown Hospital's cafeteria serves lunch seven days a week ------ only on weekdays.",
+          "options": {
+            "A": "within",
+            "B": "as though",
+            "C": "each time",
+            "D": "rather than"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 129,
+          "text": "The store's entire inventory of lumber comes from a nearby ------ supplier.",
+          "options": {
+            "A": "financial",
+            "B": "promotional",
+            "C": "chemical",
+            "D": "commercial"
+          },
+          "correct_answer": "D"
+        },
+        {
+          "id": 130,
+          "text": "For a $95 fee, our mechanics will ------- determine what repairs are needed.",
+          "options": {
+            "A": "diagnosed",
+            "B": "diagnostic",
+            "C": "diagnosable",
+            "D": "diagnose"
+          },
+          "correct_answer": "B"
+        }
+      ]
+    }
+    ]
+}
