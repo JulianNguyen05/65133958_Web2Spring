@@ -42,8 +42,6 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">${o.title}</h5>
                         <p class="card-text text-muted">${o.description}</p>
-                        <small class="text-secondary">Source: ${o.fileName}</small> <br>
-                        <small class="text-muted">Ngày tạo: ${o.createdAt}</small>
                     </div>
                 </div>
             </div>

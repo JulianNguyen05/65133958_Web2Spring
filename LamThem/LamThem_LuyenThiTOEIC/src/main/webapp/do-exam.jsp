@@ -250,6 +250,24 @@
         document.getElementById("reviewContent").innerHTML = reviewHtml;
         document.getElementById("finalScore").innerText = correctCount;
         document.getElementById("totalQuestions").innerText = questions.length;
+        
+     	// Lưu điểm về Server
+        var examId = new URLSearchParams(window.location.search).get("id"); // Lấy ID trên thanh URL
+        var totalTime = 20 * 60; // Tổng thời gian 20 phút
+        var timeSpent = totalTime - timeLeft; // Số giây đã tiêu tốn
+
+        var formData = new URLSearchParams();
+        formData.append("examId", examId);
+        formData.append("score", correctCount);
+        formData.append("timeSpent", timeSpent);
+
+        // Gửi ngầm dữ liệu về SaveResultServlet
+        fetch('save-result', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData.toString()
+        }).then(response => console.log("Lưu điểm thành công!"))
+          .catch(error => console.error("Lỗi:", error));
 
         // Hoán đổi giao diện
         document.getElementById("examHeader").style.display = "none";
