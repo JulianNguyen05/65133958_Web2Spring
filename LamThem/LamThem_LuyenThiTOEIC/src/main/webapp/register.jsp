@@ -1,266 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <!DOCTYPE html>
-  <html lang="vi">
-
-  <head>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký - JulianToeic Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      /* Sử dụng lại style của Login để đồng bộ */
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-      :root {
-        --primary-bg: #0f2027;
-        --glass-bg: rgba(255, 255, 255, 0.05);
-        --glass-border: rgba(255, 255, 255, 0.1);
-        --neon-blue: #00E5FF;
-        --text-color: #ffffff;
-      }
-
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(200deg, #0f2027, #203a43, #2c5364);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: var(--text-color);
-        overflow: hidden;
-      }
-
-      @keyframes gradientBG {
-        0% {
-          background-position: 0% 50%;
-        }
-
-        50% {
-          background-position: 100% 50%;
-        }
-
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        z-index: -1;
-        opacity: 0.6;
-      }
-
-      .orb-1 {
-        width: 300px;
-        height: 300px;
-        background: #00E5FF;
-        top: -50px;
-        left: -50px;
-      }
-
-      .orb-2 {
-        width: 250px;
-        height: 250px;
-        background: #7b4397;
-        bottom: -50px;
-        right: -50px;
-      }
-
-      .card {
-        background: var(--glass-bg);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid var(--glass-border);
-        padding: 50px 40px;
-        border-radius: 20px;
-        width: 100%;
-        max-width: 380px;
-        text-align: center;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s;
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-      }
-
-      .card h2 {
-        font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 5px;
-        letter-spacing: 1px;
-        text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-      }
-
-      .card p {
-        font-size: 13px;
-        opacity: 0.7;
-        margin-bottom: 30px;
-        font-weight: 300;
-      }
-
-      .input-group {
-        position: relative;
-        margin-bottom: 25px;
-        text-align: left;
-      }
-
-      .input-group i {
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--neon-blue);
-        font-size: 18px;
-      }
-
-      .input-group input {
-        width: 100%;
-        padding: 15px 15px 15px 45px;
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid transparent;
-        border-radius: 50px;
-        color: #fff;
-        font-size: 15px;
-        font-family: 'Poppins', sans-serif;
-        box-sizing: border-box;
-        outline: none;
-        transition: 0.3s;
-      }
-
-      .input-group input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      .input-group input:focus {
-        border-color: var(--neon-blue);
-        box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
-        background: rgba(255, 255, 255, 0.15);
-      }
-
-      .btn {
-        width: 100%;
-        padding: 15px;
-        background: linear-gradient(90deg, #00E5FF, #0072ff);
-        border: none;
-        border-radius: 50px;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: 0.3s;
-        box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
-        margin-top: 10px;
-      }
-
-      .btn:hover {
-        background: linear-gradient(90deg, #0072ff, #00E5FF);
-        box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
-        transform: scale(1.02);
-      }
-
-      .link {
-        margin-top: 25px;
-        font-size: 14px;
-      }
-
-      .link a {
-        color: var(--neon-blue);
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .link a:hover {
-        text-shadow: 0 0 10px var(--neon-blue);
-        text-decoration: underline;
-      }
-
-      .msg {
-        display: none;
-        padding: 12px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        font-size: 13px;
-        animation: fadeIn 0.5s ease;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .error {
-        background: rgba(231, 76, 60, 0.2);
-        border: 1px solid #e74c3c;
-        color: #e74c3c;
-      }
+        /* Tái sử dụng CSS của file login.jsp ở trên */
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7fa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-wrapper { background: #ffffff; padding: 50px 40px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05); width: 100%; max-width: 400px; text-align: center; }
+        .logo-icon { font-size: 40px; margin-bottom: 15px; background: linear-gradient(135deg, #00E5FF, #0072ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-weight: 700; color: #2c3e50; margin-bottom: 5px; }
+        p { color: #8392a5; font-size: 14px; margin-bottom: 30px; }
+        .input-group { position: relative; margin-bottom: 20px; }
+        .input-group i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #a0aec0; }
+        .input-group input { width: 100%; padding: 15px 15px 15px 50px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 14px; color: #2d3748; outline: none; transition: 0.3s; box-sizing: border-box; }
+        .input-group input:focus { border-color: #0072ff; background: #fff; box-shadow: 0 0 0 4px rgba(0, 114, 255, 0.1); }
+        .btn-login { width: 100%; padding: 15px; border: none; border-radius: 12px; background: linear-gradient(135deg, #00E5FF, #0072ff); color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0, 114, 255, 0.2); margin-top: 10px; }
+        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(0, 114, 255, 0.3); }
+        .link { margin-top: 25px; font-size: 14px; color: #718096; }
+        .link a { color: #0072ff; text-decoration: none; font-weight: 600; }
+        .link a:hover { text-decoration: underline; }
+        .msg { padding: 12px; border-radius: 10px; margin-bottom: 20px; font-size: 13px; display: none; }
+        .error { background: #f8d7da; color: #842029; }
     </style>
-  </head>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="logo-icon"><i class="fas fa-user-plus"></i></div>
+        <h2>Tạo tài khoản mới</h2>
+        <p>Tham gia JulianToeic Lab ngay hôm nay</p>
 
-  <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+        <div id="errMsg" class="msg error"><i class="fas fa-exclamation-triangle"></i> <span id="errText">Lỗi!</span></div>
 
-    <div class="card">
-      <h2>JulianToeic Lab</h2>
-      <p>Create new account</p>
+        <form action="RegisterServlet" method="POST">
+            <div class="input-group">
+                <input type="text" name="fullName" placeholder="Họ và Tên" required autocomplete="off">
+                <i class="fas fa-id-card"></i>
+            </div>
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Tên đăng nhập" required autocomplete="off">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <i class="fas fa-lock"></i>
+            </div>
+            <button type="submit" class="btn-login">Đăng Ký</button>
+        </form>
 
-      <div id="errMsg" class="msg error"><i class="fas fa-exclamation-triangle"></i> <span id="errText">Lỗi!</span>
-      </div>
-
-      <form action="RegisterServlet" method="POST">
-        <div class="input-group">
-          <i class="fas fa-id-card"></i>
-          <input type="text" name="fullName" placeholder="Full Name" required autocomplete="off">
-        </div>
-
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" name="username" placeholder="Username" required autocomplete="off">
-        </div>
-
-        <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" name="password" placeholder="Password" required>
-        </div>
-
-        <button type="submit" class="btn">Đăng Ký</button>
-      </form>
-
-      <div class="link">
-        Đã có tài khoản? <a href="login.jsp">Đăng nhập</a>
-      </div>
+        <div class="link">Đã có tài khoản? <a href="login.jsp">Đăng nhập</a></div>
     </div>
 
     <script>
-      const p = new URLSearchParams(window.location.search);
-      const errDiv = document.getElementById('errMsg');
-      const errTxt = document.getElementById('errText');
-      const errType = p.get('error');
-
-      if (errType) {
-        errDiv.style.display = 'block';
-        if (errType === 'admin') errTxt.innerText = 'Không thể dùng tên "admin"!';
-        else if (errType === 'failed') errTxt.innerText = 'Tên đăng nhập đã tồn tại!';
-
-        setTimeout(() => { errDiv.style.opacity = '0'; setTimeout(() => errDiv.style.display = 'none', 1000); }, 5000);
-      }
+        const p = new URLSearchParams(window.location.search);
+        const errType = p.get('error');
+        if (errType) {
+            document.getElementById('errMsg').style.display = 'block';
+            if (errType === 'admin') document.getElementById('errText').innerText = 'Không thể dùng tên "admin"!';
+            else if (errType === 'failed') document.getElementById('errText').innerText = 'Tên đăng nhập đã tồn tại!';
+        }
     </script>
-  </body>
-
-  </html>
+</body>
+</html>

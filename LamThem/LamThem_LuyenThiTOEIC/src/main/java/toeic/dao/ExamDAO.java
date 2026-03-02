@@ -67,7 +67,6 @@ public class ExamDAO {
 		return isSuccess;
 	}
 
-	// Hàm xóa đề thi
 	public boolean deleteExam(int examId) {
 		String query = "DELETE FROM exams WHERE exam_id = ?";
 		try {
@@ -87,7 +86,6 @@ public class ExamDAO {
 		return false;
 	}
 
-	// Hàm cập nhật đề thi (chỉ sửa Tên và Mô tả, giữ nguyên file JSON)
 	public boolean updateExam(int examId, String title, String description) {
 		String query = "UPDATE exams SET title = ?, description = ? WHERE exam_id = ?";
 		try {

@@ -48,7 +48,6 @@ public class UserDAO {
 		return false;
 	}
 
-//1. Lấy danh sách tất cả User
 	public List<User> getAllUsers() {
 		List<User> list = new ArrayList<>();
 		String query = "SELECT * FROM users ORDER BY user_id DESC";
@@ -69,7 +68,6 @@ public class UserDAO {
 		return list;
 	}
 
-	// 2. Thêm User mới
 	public boolean insertUser(String username, String password, String fullName, String role) {
 		String query = "INSERT INTO users (username, password, full_name, role) VALUES (?, ?, ?, ?)";
 		try {
@@ -88,7 +86,6 @@ public class UserDAO {
 		return false;
 	}
 
-	// 3. Xóa User
 	public boolean deleteUser(int userId) {
 		String query = "DELETE FROM users WHERE user_id = ?";
 		try {
@@ -104,8 +101,6 @@ public class UserDAO {
 		return false;
 	}
 
-	// 4. Cập nhật User (Thường Admin không cần đổi pass hộ user, chỉ đổi Tên và
-	// Quyền)
 	public boolean updateUser(int userId, String fullName, String role) {
 		String query = "UPDATE users SET full_name = ?, role = ? WHERE user_id = ?";
 		try {

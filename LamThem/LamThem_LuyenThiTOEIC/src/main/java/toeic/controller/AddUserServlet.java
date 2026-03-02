@@ -15,7 +15,7 @@ public class AddUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
-		String password = request.getParameter("password"); // Thực tế nên mã hóa Hash MD5/Bcrypt
+		String password = request.getParameter("password");
 		String fullName = request.getParameter("fullName");
 		String role = request.getParameter("role");
 
