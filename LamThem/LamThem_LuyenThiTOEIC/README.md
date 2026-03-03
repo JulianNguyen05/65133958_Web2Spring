@@ -1,7 +1,3 @@
-Dưới đây là phiên bản đã bổ sung phần **Author** ở cuối tài liệu, giữ nguyên toàn bộ nội dung và đường dẫn ảnh của bạn:
-
----
-
 # JulianToeic Lab – TOEIC Part 5 Preparation System
 
 An interactive and modern web application designed to help learners effectively prepare for the TOEIC exam. Built with Java Servlets, JSP, and a fully responsive user interface, JulianToeic Lab delivers a complete ecosystem—from user management and realistic exam simulation to competitive performance leaderboards.
