@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin Sản Phẩm</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .product-card { 
+            border: 1px solid #ccc; 
+            padding: 20px; 
+            border-radius: 8px; 
+            width: 300px; 
+            background-color: #f9f9f9;
+        }
+        .price { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Bài 5: Truyền Đối Tượng Sản Phẩm (Controller -> View)</h2>
+    
+    <div class="product-card">
+        <h3>Chi tiết Sản phẩm</h3>
+        
+        <!-- Sử dụng Thymeleaf (th:text) để lấy dữ liệu từ Object 'sanPhamObj' -->
+        <p>Mã SP: <span th:text="${sanPhamObj.maSP}"></span></p>
+        
+        <p>Tên SP: <span th:text="${sanPhamObj.tenSP}"></span></p>
+        
+        <!-- Mẹo: Dùng #numbers.formatDecimal để định dạng tiền tệ có dấu phẩy -->
+        <p>Giá bán: <span class="price" th:text="${#numbers.formatDecimal(sanPhamObj.gia, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></span></p>
+    </div>
+
+</body>
+</html>
