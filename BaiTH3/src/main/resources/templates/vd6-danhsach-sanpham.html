@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Sản Phẩm</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h2 { color: #005088; text-align: center; }
+        
+        /* CSS trang trí cho bảng đẹp mắt hơn */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #005088;
+            color: white;
+            text-transform: uppercase;
+        }
+        /* Hiệu ứng màu nền xen kẽ cho các hàng */
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #e2e8f0; } /* Đổi màu khi di chuột qua */
+        
+        .price { color: #d93025; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Bài 6: Hiển thị Danh sách Sản Phẩm</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã SP</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá Bán</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- VÒNG LẶP THYMELEAF: th:each -->
+            <!-- sp: Biến đại diện cho từng phần tử khi lặp -->
+            <!-- iterStat: Biến trạng thái để đếm số thứ tự -->
+            <!-- ${dsSanPham}: Danh sách được truyền từ Controller -->
+            <tr th:each="sp, iterStat : ${dsSanPham}">
+                
+                <!-- iterStat.count sẽ tự động tăng từ 1, 2, 3... -->
+                <td th:text="${iterStat.count}"></td>
+                
+                <!-- Lấy dữ liệu từ đối tượng 'sp' -->
+                <td th:text="${sp.maSP}"></td>
+                <td th:text="${sp.tenSP}"></td>
+                
+                <!-- Định dạng tiền tệ -->
+                <td class="price" th:text="${#numbers.formatDecimal(sp.gia, 0, 'COMMA', 0, 'POINT')} + ' đ'"></td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
