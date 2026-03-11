@@ -124,40 +124,42 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo-section">
-            <img th:src="@{/images/Logo_NTU.png}" alt="NTU Logo">
-            <div class="school-info">
-                TRƯỜNG ĐẠI HỌC NHA TRANG<br>
-                KHOA CÔNG NGHỆ THÔNG TIN
-            </div>
-        </div>
-        <div class="user-section">
-            <span th:text="${username != null ? username : '[UserName]'}"></span>
-        </div>
-    </header>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Dashboard</a></li>
+        <li><a th:href="@{/page/all}">Page - List</a></li>
+        <li><a th:href="@{/page/new}">Page - Addnew</a></li>
+        <li><a th:href="@{/post/all}">Post - List</a></li>
+        <li><a th:href="@{/post/new}">Post - Addnew</a></li>
+        <li><a>&nbsp;</a></li>
+    </ul>
+</nav>
 
-    <div class="main-container">
-        <nav>
-            <ul>
-                <li><a th:href="@{/}">Dashboard</a></li>
-                <li><a th:href="@{/page/all}">Page - List</a></li>
-                <li><a th:href="@{/pages/new}">Page - Addnew</a></li>
-                <li><a th:href="@{/posts}">Post - List</a></li>
-                <li><a th:href="@{/posts/add}">Post - Addnew</a></li>
-                <li><a>&nbsp;</a></li>
-                <li><a>&nbsp;</a></li>
-            </ul>
-        </nav>
-
-        <main>
-            Content
-        </main>
-    </div>
-
-    <footer>
-        ©2025 by Student Name – FIT.NTU
-    </footer>
+<main style="display: block; padding: 20px;"> <h2 style="color: black; margin-bottom: 20px;">Danh sách Page</h2>
+    
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 16px; color: black;">
+        <thead>
+            <tr style="background-color: #f0f0f0;">
+                <th style="padding: 10px;">id</th>
+                <th style="padding: 10px;">Pagename</th>
+                <th style="padding: 10px;">parentPageId</th>
+                <th style="padding: 10px;">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="page : ${pages}">
+                <td style="padding: 10px;" th:text="${page.id}"></td>
+                <td style="padding: 10px;" th:text="${page.pageName}"></td>
+                <td style="padding: 10px;" th:text="${page.parentPageId}"></td>
+                <td style="padding: 10px;">
+                    <a th:href="@{/page/view/{id}(id=${page.id})}">[view]</a>
+                    <a href="#">[edit]</a>
+                    <a th:href="@{/page/delete/{id}(id=${page.id})}" onclick="return confirm('Bạn có chắc muốn xóa trang này?');">[delete]</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
 
 </body>
 </html>
