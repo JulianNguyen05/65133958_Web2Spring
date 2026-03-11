@@ -43,4 +43,13 @@ public class MockDataService {
 	public void deletePage(int id) {
 		pages.removeIf(p -> p.getId() == id);
 	}
+
+	public void updatePage(Page updatedPage) {
+		for (int i = 0; i < pages.size(); i++) {
+			if (pages.get(i).getId() == updatedPage.getId()) {
+				pages.set(i, updatedPage);
+				break;
+			}
+		}
+	}
 }

@@ -61,4 +61,23 @@ public class PageController {
 		return "redirect:/page/all";
 	}
 
+	// e. Page - Edit (Hiển thị form sửa)
+	@GetMapping("/edit/{id}")
+	public String showEditPageForm(@PathVariable("id") int id, Model model) {
+		Page page = dataService.getPageById(id);
+		if (page == null) {
+			return "redirect:/page/all";
+		}
+		model.addAttribute("page", page);
+		model.addAttribute("username", "Julian Nguyen");
+		return "page-edit"; // Chuyển đến trang form edit
+	}
+
+	// Xử lý dữ liệu khi submit form Edit
+	@PostMapping("/edit")
+	public String updatePage(@ModelAttribute("page") Page page) {
+		dataService.updatePage(page);
+		return "redirect:/page/all";
+	}
+
 }
