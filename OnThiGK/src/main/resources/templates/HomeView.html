@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Dashboard - NTU</title>
+    <style>
+        /* Thiết lập chung */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Tạo viền bao quanh toàn bộ trang */
+            outline: 1px solid #000;
+            margin: 2px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            border-bottom: 1px solid #000;
+            height: 80px;
+        }
+
+        .logo-section {
+            width: 250px;
+            padding: 10px;
+            border-right: 1px solid #000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-section img {
+            height: 50px;
+        }
+
+        .school-info {
+            font-size: 11px;
+            font-weight: bold;
+            color: #d32f2f;
+            line-height: 1.2;
+        }
+
+        .user-section {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Body Container */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        /* Sidebar */
+        nav {
+            width: 250px;
+            border-right: 1px solid #000;
+            background-color: #fff;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            border-bottom: 1px solid #000;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            padding: 10px 15px;
+            width: 100%;
+            display: block;
+        }
+
+        nav ul li:first-child a {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        nav ul li:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Content Area */
+        main {
+            flex-grow: 1;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: #888;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #000;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <img src="https://upload.wikimedia.org/wikipedia/vi/c/c7/Logo_Dai_hoc_Nha_Trang.png" alt="NTU Logo">
+            <div class="school-info">
+                TRƯỜNG ĐẠI HỌC NHA TRANG<br>
+                KHOA CÔNG NGHỆ THÔNG TIN
+            </div>
+        </div>
+        <div class="user-section">
+            <span th:text="${username != null ? username : '[UserName]'}"></span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Dashboard</a></li>
+                <li><a th:href="@{/pages}">Page - List</a></li>
+                <li><a th:href="@{/pages/add}">Page - Addnew</a></li>
+                <li><a th:href="@{/posts}">Post - List</a></li>
+                <li><a th:href="@{/posts/add}">Post - Addnew</a></li>
+                <li><a>&nbsp;</a></li>
+                <li><a>&nbsp;</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            Content
+        </main>
+    </div>
+
+    <footer>
+        ©2025 by Student Name – FIT.NTU
+    </footer>
+
+</body>
+</html>
