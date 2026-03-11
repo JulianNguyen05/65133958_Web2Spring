@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Page - Dashboard NTU</title>
+    <style>
+        /* Thiết lập chung và Layout (giữ nguyên) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { display: flex; flex-direction: column; min-height: 100vh; outline: 1px solid #000; margin: 2px; }
+        header { display: flex; border-bottom: 1px solid #000; height: 80px; }
+        .logo-section { width: 250px; padding: 10px; border-right: 1px solid #000; display: flex; align-items: center; gap: 10px; }
+        .logo-section img { height: 50px; }
+        .school-info { font-size: 11px; font-weight: bold; color: #d32f2f; line-height: 1.2; }
+        .user-section { flex-grow: 1; display: flex; justify-content: flex-end; align-items: center; padding-right: 30px; font-size: 18px; font-weight: bold; }
+        .main-container { display: flex; flex-grow: 1; }
+        nav { width: 250px; border-right: 1px solid #000; background-color: #fff; }
+        nav ul { list-style: none; }
+        nav ul li { border-bottom: 1px solid #000; min-height: 45px; display: flex; align-items: center; }
+        nav ul li a { text-decoration: none; color: #000; padding: 10px 15px; width: 100%; display: block; }
+        nav ul li:first-child a { font-weight: bold; font-size: 1.1em; }
+        nav ul li:hover { background-color: #f0f0f0; }
+        footer { border-top: 1px solid #000; text-align: center; padding: 10px; font-size: 14px; background: #fff; }
+        
+        /* CSS Dành riêng cho phần Hiển thị chi tiết */
+        main { flex-grow: 1; background-color: #fff; padding: 30px; color: #333; }
+        .view-container { max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 25px; border-radius: 5px; background-color: #f9f9f9; }
+        .detail-row { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
+        .detail-row:last-child { border-bottom: none; }
+        .detail-label { font-weight: bold; display: inline-block; width: 150px; color: #555; }
+        .detail-value { color: #000; font-size: 16px; }
+        .content-box { margin-top: 10px; padding: 15px; background-color: #fff; border: 1px solid #eee; border-radius: 4px; min-height: 100px; white-space: pre-wrap; }
+        
+        .btn-back { display: inline-block; margin-top: 20px; background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        .btn-back:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <img th:src="@{/images/logo.png}" alt="NTU Logo">
+            <div class="school-info">
+                TRƯỜNG ĐẠI HỌC NHA TRANG<br>
+                KHOA CÔNG NGHỆ THÔNG TIN
+            </div>
+        </div>
+        <div class="user-section">
+            <span th:text="${username != null ? username : 'Guest'}"></span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Dashboard</a></li>
+                <li><a th:href="@{/page/all}">Page - List</a></li>
+                <li><a th:href="@{/page/new}">Page - Addnew</a></li>
+                <li><a th:href="@{/post/all}">Post - List</a></li>
+                <li><a th:href="@{/post/new}">Post - Addnew</a></li>
+                <li><a>&nbsp;</a></li>
+                <li><a>&nbsp;</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="view-container">
+                <h2 style="text-align: center; margin-bottom: 25px; color: #333;">Chi tiết Trang</h2>
+                
+                <div class="detail-row">
+                    <span class="detail-label">ID Trang:</span>
+                    <span class="detail-value" th:text="${page.id}"></span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Tên trang:</span>
+                    <span class="detail-value" th:text="${page.pageName}"></span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Từ khóa:</span>
+                    <span class="detail-value" th:text="${page.keyword}"></span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">ID Trang cha:</span>
+                    <span class="detail-value" th:text="${page.parentPageId != null ? page.parentPageId : 'Không có (Trang gốc)'}"></span>
+                </div>
+                
+                <div class="detail-row" style="border-bottom: none;">
+                    <span class="detail-label">Nội dung:</span>
+                    <div class="content-box" th:text="${page.content}"></div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a th:href="@{/page/all}" class="btn-back">Quay lại danh sách</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        ©2026 by 65133958 – FIT.NTU
+    </footer>
+
+</body>
+</html>
