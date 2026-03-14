@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <title>Hệ thống Quản trị</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        header { display: flex; justify-content: space-between; padding: 10px 20px; border-bottom: 2px solid #ccc; }
+        .logo { font-weight: bold; color: #d32f2f; }
+        .main-container { display: flex; flex: 1; }
+        aside { width: 200px; border-right: 2px solid #ccc; padding: 10px; background: #f9f9f9; }
+        aside ul { list-style: none; padding: 0; }
+        aside ul li { margin-bottom: 10px; border: 1px solid #ccc; padding: 5px; }
+        aside ul li a { text-decoration: none; color: black; display: block; }
+        main { flex: 1; padding: 20px; }
+        footer { text-align: center; padding: 10px; border-top: 2px solid #ccc; background: #eee; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">TRƯỜNG ĐẠI HỌC NHA TRANG<br>KHOA CÔNG NGHỆ THÔNG TIN</div>
+        <div class="user-info">[Julian Nguyen]</div>
+    </header>
+
+    <div class="main-container">
+        <aside>
+            <ul>
+                <li><strong><a th:href="@{/dashboard}">Dashboard</a></strong></li>
+                <li><a th:href="@{/page/all}">Page - List</a></li>
+                <li><a th:href="@{/page/new}">Page - Addnew</a></li>
+                <li><a th:href="@{/post/all}">Post - List</a></li>
+                <li><a th:href="@{/post/new}">Post - Addnew</a></li>
+            </ul>
+        </aside>
+
+        <main th:replace="${content}"></main>
+    </div>
+
+    <footer>
+        ©2025 by Nguyễn Hữu Trọng (65133958) - FIT.NTU
+    </footer>
+
+</body>
+</html>
