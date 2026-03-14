@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:replace="~{layout :: layout(~{::main})}">
+        <main>
+            <h2>Chỉnh sửa Post</h2>
+            <form th:action="@{/post/edit}" method="post" style="max-width: 400px;" th:if="${post != null}">
+                
+                <div style="margin-bottom: 10px;">
+                    <label>ID:</label><br>
+                    <input type="number" name="id" th:value="${post.id}" readonly style="width: 100%; background: #eee;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Title:</label><br>
+                    <input type="text" name="title" th:value="${post.title}" required style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Content:</label><br>
+                    <textarea name="content" rows="5" required style="width: 100%;" th:text="${post.content}"></textarea>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label>Category ID:</label><br>
+                    <input type="number" name="categoryId" th:value="${post.categoryId}" required style="width: 100%;" />
+                </div>
+                
+                <button type="submit" style="padding: 5px 15px;">Cập nhật Post</button>
+                <a th:href="@{/post/all}" style="margin-left: 10px;">Hủy</a>
+            </form>
+            
+            <div th:if="${post == null}">
+                <p style="color: red;">Không tìm thấy bài viết để sửa!</p>
+                <a th:href="@{/post/all}"><button>Quay lại danh sách</button></a>
+            </div>
+            
+        </main>
+    </div>
+</body>
+</html>

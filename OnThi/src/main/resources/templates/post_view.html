@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:replace="~{layout :: layout(~{::main})}">
+        <main>
+            <h2>Chi tiết Post</h2>
+            
+            <div th:if="${post != null}" style="background: #e9f5f9; padding: 15px; border-radius: 5px; border: 1px solid #bce8f1;">
+                <p><strong>ID:</strong> <span th:text="${post.id}"></span></p>
+                <p><strong>Title:</strong> <span th:text="${post.title}"></span></p>
+                <p><strong>Category ID:</strong> <span th:text="${post.categoryId}"></span></p>
+                <p><strong>Content:</strong></p>
+                <div style="background: white; padding: 10px; border: 1px solid #ccc;" th:text="${post.content}"></div>
+            </div>
+            
+            <div th:if="${post == null}">
+                <p style="color: red;">Không tìm thấy bài viết này!</p>
+            </div>
+            
+            <br>
+            <a th:href="@{/post/all}"><button>Quay lại danh sách</button></a>
+        </main>
+    </div>
+</body>
+</html>

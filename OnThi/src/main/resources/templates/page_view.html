@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:replace="~{layout :: layout(~{::main})}">
+        <main>
+            <h2>Chi tiết Page</h2>
+            
+            <div th:if="${page != null}" style="background: #f4f4f4; padding: 15px; border-radius: 5px;">
+                <p><strong>ID:</strong> <span th:text="${page.id}"></span></p>
+                <p><strong>Page Name:</strong> <span th:text="${page.pageName}"></span></p>
+                <p><strong>Keyword:</strong> <span th:text="${page.keyword}"></span></p>
+                <p><strong>Content:</strong> <span th:text="${page.content}"></span></p>
+                <p><strong>Parent Page ID:</strong> <span th:text="${page.parentPageId != null ? page.parentPageId : 'Trống'}"></span></p>
+            </div>
+            
+            <div th:if="${page == null}">
+                <p style="color: red;">Không tìm thấy trang này!</p>
+            </div>
+            
+            <br>
+            <a th:href="@{/page/all}"><button>Quay lại danh sách</button></a>
+        </main>
+    </div>
+</body>
+</html>

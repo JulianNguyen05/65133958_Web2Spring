@@ -7,6 +7,9 @@ public class Page {
 	private String content;
 	private Integer parentPageId;
 
+	public Page() {
+	}
+
 	public Page(int id, String pageName, String keyword, String content, Integer parentPageId) {
 		this.id = id;
 		this.pageName = pageName;

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:replace="~{layout :: layout(~{::main})}">
+        <main>
+            <h2>Thêm mới Post</h2>
+            <form th:action="@{/post/new}" method="post" style="max-width: 400px;">
+                <div style="margin-bottom: 10px;">
+                    <label>ID:</label><br>
+                    <input type="number" name="id" required style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Title:</label><br>
+                    <input type="text" name="title" required style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Content:</label><br>
+                    <textarea name="content" rows="5" required style="width: 100%;"></textarea>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label>Category ID:</label><br>
+                    <input type="number" name="categoryId" required style="width: 100%;" />
+                </div>
+                
+                <button type="submit" style="padding: 5px 15px;">Lưu Post</button>
+                <a th:href="@{/post/all}" style="margin-left: 10px;">Hủy</a>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

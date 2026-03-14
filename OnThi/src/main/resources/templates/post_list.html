@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:replace="~{layout :: layout(~{::main})}">
+        <main>
+            <h2>Danh sách Posts</h2>
+            <table border="1" width="100%" cellpadding="5">
+                <tr>
+                    <th>id</th>
+                    <th>Title</th>
+                    <th>categoryId</th>
+                    <th>Hành động</th>
+                </tr>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.id}"></td>
+                    <td th:text="${post.title}"></td>
+                    <td th:text="${post.categoryId}"></td>
+                    <td>
+                        <a th:href="@{'/post/view/' + ${post.id}}">[view]</a>
+                        <a th:href="@{'/post/edit/' + ${post.id}}">[edit]</a>
+                        <a th:href="@{'/post/delete/' + ${post.id}}" onclick="return confirm('Bạn có chắc muốn xóa Post này?')">[delete]</a>
+                    </td>
+                </tr>
+            </table>
+            
+            <br>
+            <a th:href="@{/post/new}"><button>+ Thêm Post mới</button></a>
+        </main>
+    </div>
+</body>
+</html>

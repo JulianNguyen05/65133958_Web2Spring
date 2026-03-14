@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:replace="~{layout :: layout(~{::main})}">
+        <main>
+            <h2>Chỉnh sửa Page</h2>
+            <form th:action="@{/page/edit}" method="post" style="max-width: 400px;" th:if="${page != null}">
+                <div style="margin-bottom: 10px;">
+                    <label>ID:</label><br>
+                    <input type="number" name="id" th:value="${page.id}" readonly style="width: 100%; background: #eee;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Page Name:</label><br>
+                    <input type="text" name="pageName" th:value="${page.pageName}" required style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Keyword:</label><br>
+                    <input type="text" name="keyword" th:value="${page.keyword}" style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <label>Content:</label><br>
+                    <textarea name="content" rows="4" style="width: 100%;" th:text="${page.content}"></textarea>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label>Parent Page ID:</label><br>
+                    <input type="number" name="parentPageId" th:value="${page.parentPageId}" style="width: 100%;" />
+                </div>
+                
+                <button type="submit" style="padding: 5px 15px;">Cập nhật Page</button>
+                <a th:href="@{/page/all}" style="margin-left: 10px;">Hủy</a>
+            </form>
+            
+            <div th:if="${page == null}">
+                <p style="color: red;">Không tìm thấy trang để sửa!</p>
+                <a th:href="@{/page/all}">Quay lại</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
