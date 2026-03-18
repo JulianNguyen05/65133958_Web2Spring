@@ -1,7 +1,19 @@
 package julian.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Page")
 public class Page {
-	private int id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	private String pageName;
 	private String keyword;
 	private String content;
@@ -10,7 +22,7 @@ public class Page {
 	public Page() {
 	}
 
-	public Page(int id, String pageName, String keyword, String content, Integer parentPageId) {
+	public Page(Integer id, String pageName, String keyword, String content, Integer parentPageId) {
 		this.id = id;
 		this.pageName = pageName;
 		this.keyword = keyword;
@@ -18,11 +30,11 @@ public class Page {
 		this.parentPageId = parentPageId;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

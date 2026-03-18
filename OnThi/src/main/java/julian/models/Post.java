@@ -1,23 +1,41 @@
 package julian.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Post")
 public class Post {
-	private int id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	private String title;
 	private String content;
-	private int categoryId;
+	private Integer categoryId;
 
-	public Post(int id, String title, String content, int categoryId) {
+	private String thumbnailImage;
+
+	public Post() {
+	}
+
+	public Post(Integer id, String title, String content, Integer categoryId, String thumbnailImage) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.categoryId = categoryId;
+		this.thumbnailImage = thumbnailImage;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -37,11 +55,19 @@ public class Post {
 		this.content = content;
 	}
 
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public String getThumbnailImage() {
+		return thumbnailImage;
+	}
+
+	public void setThumbnailImage(String thumbnailImage) {
+		this.thumbnailImage = thumbnailImage;
 	}
 }
