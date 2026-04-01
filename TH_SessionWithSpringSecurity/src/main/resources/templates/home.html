@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - Julian Nguyễn</title>
+    <style>
+        body { font-family: sans-serif; margin: 50px; line-height: 1.6; }
+        .container { max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+        .user-info { background: #f4f4f4; padding: 10px; margin-bottom: 20px; }
+        .btn-logout { background: #ff4d4d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Chào mừng bạn đến với hệ thống!</h1>
+    
+    <div class="user-info">
+        <p>Xin chào, <strong sec:authentication="name">User</strong>!</p>
+        <p>Vai trò của bạn: <span sec:authentication="principal.authorities">ROLE_USER</span></p>
+    </div>
+
+    <p>Đây là trang bảo mật, chỉ những người đăng nhập mới có thể thấy nội dung này.</p>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn-logout">Đăng xuất</button>
+    </form>
+</div>
+
+</body>
+</html>

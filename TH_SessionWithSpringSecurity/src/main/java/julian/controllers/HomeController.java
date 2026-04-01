@@ -13,6 +13,7 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login() {
+		System.out.println("Đang vào trang login...");
 		return "login";
 	}
 }
