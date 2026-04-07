@@ -8,7 +8,7 @@ services:
       MYSQL_DATABASE: thigk_db           # Tên database sẽ được tự động tạo
       MYSQL_ROOT_PASSWORD: root          # Mật khẩu tài khoản root
     ports:
-      - "3306:3306"                      # Ánh xạ port 3306 của container ra ngoài máy thật
+      - "33012:3306"                      # Ánh xạ port 3306 của container ra ngoài máy thật
     volumes:
       - mysql_data:/var/lib/mysql        # Lưu trữ dữ liệu để không bị mất khi xóa container
     restart: unless-stopped              # Tự động khởi động lại nếu bị lỗi
