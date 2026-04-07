@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: html(content=~{::div})}">
+<body>
+    <div>
+        <h3>Chi tiết Student</h3>
+        <p><b>Id:</b> <span th:text="${student.id}"></span></p>
+        <p><b>Tên Sinh Viên (Name):</b> <span th:text="${student.name}"></span></p>
+        <p><b>Mã nhóm (Group Id):</b> <span th:text="${student.groupId}"></span></p>
+        <br>
+        <a th:href="@{/student/all}" style="text-decoration: none; color: blue;">&larr; Quay lại danh sách</a>
+    </div>
+</body>
+</html>

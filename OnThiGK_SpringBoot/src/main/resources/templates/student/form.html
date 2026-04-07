@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: html(content=~{::div})}">
+<body>
+    <div>
+        <h3>Thêm mới Student</h3>
+        <form th:action="@{/student/new}" th:object="${student}" method="post">
+            <label style="display:inline-block; width: 120px;">Id:</label> 
+            <input type="text" th:field="*{id}" required><br><br>
+            
+            <label style="display:inline-block; width: 120px;">Tên Sinh Viên:</label> 
+            <input type="text" th:field="*{name}" required><br><br>
+            
+            <label style="display:inline-block; width: 120px;">Group Id:</label> 
+            <input type="text" th:field="*{groupId}"><br><br>
+            
+            <button type="submit" style="margin-left: 125px;">Lưu lại</button>
+        </form>
+    </div>
+</body>
+</html>

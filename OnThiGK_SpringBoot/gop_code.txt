@@ -1,0 +1,537 @@
+================================================================================
+FILE: .\build.gradle
+================================================================================
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'julian'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+================================================================================
+FILE: .\docker-compose.yml
+================================================================================
+
+
+================================================================================
+FILE: .\Dockerfile
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\java\julian\controller\DashboardController.java
+================================================================================
+package julian.controller;
+
+public class DashboardController {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\controller\StudentController.java
+================================================================================
+package julian.controller;
+
+public class StudentController {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\controller\TopicController.java
+================================================================================
+package julian.controller;
+
+public class TopicController {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\model\Student.java
+================================================================================
+package julian.model;
+
+public class Student {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\model\Topic.java
+================================================================================
+package julian.model;
+
+public class Topic {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\OnThiGkSpringBootApplication.java
+================================================================================
+package julian;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OnThiGkSpringBootApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OnThiGkSpringBootApplication.class, args);
+	}
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\repository\StudentRepository.java
+================================================================================
+package julian.repository;
+
+public class StudentRepository {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\repository\TopicRepository.java
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\java\julian\service\StudentService.java
+================================================================================
+package julian.service;
+
+public class StudentService {
+
+}
+
+
+================================================================================
+FILE: .\src\main\java\julian\service\TopicService.java
+================================================================================
+package julian.service;
+
+public class TopicService {
+
+}
+
+
+================================================================================
+FILE: .\src\main\resources\static\css\style.css
+================================================================================
+/* =============================================
+   STYLE CHUNG CHO TOÀN BỘ ỨNG DỤNG
+   ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ====================== LAYOUT ====================== */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%);
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ====================== HEADER ====================== */
+.header {
+    background: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.header .username {
+    font-weight: 600;
+    color: #1e3a8a;
+    font-size: 1.1rem;
+}
+
+.header .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+/* ====================== SIDEBAR MENU ====================== */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 5px 15px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-size: 1.05rem;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.menu a.active {
+    background: #3b82f6;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.menu a i {
+    margin-right: 12px;
+    width: 20px;
+}
+
+/* ====================== CONTENT ====================== */
+.content {
+    padding: 30px;
+    flex: 1;
+    background: #f4f6f9;
+}
+
+.content h1 {
+    color: #1e3a8a;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* ====================== TABLE ====================== */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.table th {
+    background: #1e3a8a;
+    color: white;
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.table tr:hover {
+    background: #f8fafc;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ====================== BUTTON ====================== */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: #10b981;
+    color: white;
+}
+
+.btn-warning {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+/* ====================== CARD (dùng cho Dashboard) ====================== */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+/* ====================== FOOTER ====================== */
+.footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar .menu span {
+        display: none;
+    }
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+
+================================================================================
+FILE: .\src\main\resources\templates\dashboard.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\layout.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\student\form.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\student\list.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\student\view.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\topic\form.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\topic\list.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\main\resources\templates\topic\view.html
+================================================================================
+
+
+================================================================================
+FILE: .\src\test\java\julian\OnThiGkSpringBootApplicationTests.java
+================================================================================
+package julian;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class OnThiGkSpringBootApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+================================================================================
+FILE: .\Tool.java
+================================================================================
+import java.io.*;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
+import java.util.List;
+
+public class Tool {
+    public static void main(String[] args) {
+        // Thư mục cần quét (mặc định là thư mục hiện tại ".")
+        String sourceFolder = "."; 
+        // Tên file đầu ra chứa toàn bộ code
+        String outputFile = "gop_code.txt";
+
+        // 1. Đuôi file cần lấy (Mình thêm .java, bạn có thể xóa nếu không cần)
+        List<String> targetExtensions = Arrays.asList(".css", ".html", ".java");
+        
+        // 2. Tên file cụ thể cần lấy
+        List<String> targetFiles = Arrays.asList("build.gradle", "dockerfile", "docker-compose.yml, application.properties");
+
+        // 3. Các thư mục hệ thống/thư viện KHÔNG NÊN quét để tránh file txt quá nặng
+        List<String> ignoreDirs = Arrays.asList(".git", ".idea", ".vscode", "build", "target", "node_modules", "bin");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+            Files.walkFileTree(Paths.get(sourceFolder), new SimpleFileVisitor<Path>() {
+                
+                @Override
+                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
+                    String dirName = dir.getFileName().toString();
+                    // Bỏ qua các thư mục không cần thiết
+                    if (ignoreDirs.contains(dirName)) {
+                        return FileVisitResult.SKIP_SUBTREE;
+                    }
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    String fileName = file.getFileName().toString().toLowerCase();
+                    boolean isMatch = false;
+
+                    // Kiểm tra xem file có đúng đuôi mở rộng không
+                    for (String ext : targetExtensions) {
+                        if (fileName.endsWith(ext)) {
+                            isMatch = true;
+                            break;
+                        }
+                    }
+
+                    // Kiểm tra xem file có đúng tên cụ thể hoặc chứa chữ "docker" không
+                    if (!isMatch) {
+                        for (String target : targetFiles) {
+                            if (fileName.equals(target) || fileName.contains("docker")) {
+                                isMatch = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Tránh gom chính cái file kết quả txt này vào bên trong nó
+                    if (fileName.equals(outputFile)) {
+                        isMatch = false; 
+                    }
+
+                    // Nếu khớp điều kiện, ghi nội dung file đó vào gop_code.txt
+                    if (isMatch) {
+                        appendFileContent(file, writer);
+                    }
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+            System.out.println("✅ Đã gom code thành công! Vui lòng kiểm tra file: " + outputFile);
+            
+        } catch (IOException e) {
+            System.out.println("❌ Có lỗi xảy ra: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private static void appendFileContent(Path file, BufferedWriter writer) throws IOException {
+        // Tạo header phân cách giữa các file cho dễ nhìn
+        writer.write("================================================================================\n");
+        writer.write("FILE: " + file.toString() + "\n");
+        writer.write("================================================================================\n");
+        
+        try {
+            // Đọc và ghi từng dòng
+            List<String> lines = Files.readAllLines(file);
+            for (String line : lines) {
+                writer.write(line + "\n");
+            }
+        } catch (Exception e) {
+            writer.write("// Lỗi: Không thể đọc nội dung file này (có thể do sai định dạng text hoặc lỗi encoding).\n");
+        }
+        writer.write("\n\n"); // Cách ra 2 dòng trước khi nối file tiếp theo
+    }
+}
+
+

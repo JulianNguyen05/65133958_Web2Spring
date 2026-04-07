@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: html(content=~{::div})}">
+<body>
+    <div>
+        <h3>Thêm mới Topic</h3>
+        <form th:action="@{/topic/new}" th:object="${topic}" method="post">
+            <label>Id:</label> <input type="text" th:field="*{id}" required><br><br>
+            <label>Tên Topic:</label> <input type="text" th:field="*{topicName}" required><br><br>
+            <label>Mô tả:</label> <input type="text" th:field="*{topicDescription}"><br><br>
+            <label>Mã Giảng Viên:</label> <input type="text" th:field="*{supervisorId}"><br><br>
+            <label>Loại Topic:</label> <input type="text" th:field="*{topicType}"><br><br>
+            <button type="submit">Lưu lại</button>
+        </form>
+    </div>
+</body>
+</html>

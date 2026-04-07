@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: html(content=~{::div})}">
+<body>
+    <div>
+        <h3>Chi tiết Topic</h3>
+        <p><b>Id:</b> <span th:text="${topic.id}"></span></p>
+        <p><b>Tên Topic:</b> <span th:text="${topic.topicName}"></span></p>
+        <p><b>Mô tả:</b> <span th:text="${topic.topicDescription}"></span></p>
+        <p><b>Giảng viên:</b> <span th:text="${topic.supervisorId}"></span></p>
+        <p><b>Loại:</b> <span th:text="${topic.topicType}"></span></p>
+        <br>
+        <a th:href="@{/topic/all}">Quay lại danh sách</a>
+    </div>
+</body>
+</html>

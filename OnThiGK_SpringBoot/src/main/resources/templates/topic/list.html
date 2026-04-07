@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: html(content=~{::div})}">
+<body>
+    <div>
+        <h3>Topic List</h3>
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>topicName</th>
+                    <th>supervisorId</th>
+                    <th>topicType</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="topic : ${topics}">
+                    <td th:text="${topic.id}"></td>
+                    <td th:text="${topic.topicName}"></td>
+                    <td th:text="${topic.supervisorId}"></td>
+                    <td th:text="${topic.topicType}"></td>
+                    <td>
+                        <a th:href="@{/topic/view/{id}(id=${topic.id})}">[view]</a>
+                        <a href="#">[edit]</a> <a th:href="@{/topic/delete/{id}(id=${topic.id})}" onclick="return confirm('Bạn có chắc muốn xóa?');">[delete]</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
