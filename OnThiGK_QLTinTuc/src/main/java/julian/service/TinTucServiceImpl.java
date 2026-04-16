@@ -27,4 +27,9 @@ public class TinTucServiceImpl implements TinTucService {
 	public void deleteById(Integer id) {
 		repo.deleteById(id);
 	}
+
+	@Override
+	public TinTuc findById(Integer id) {
+		return repo.findById(id).orElse(null);
+	}
 }

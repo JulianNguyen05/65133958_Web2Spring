@@ -10,4 +10,6 @@ public interface TinTucService {
 	TinTuc save(TinTuc loai);
 
 	void deleteById(Integer id);
+
+	TinTuc findById(Integer id);
 }
