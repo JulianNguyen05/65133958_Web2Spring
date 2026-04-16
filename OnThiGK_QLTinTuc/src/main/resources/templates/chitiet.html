@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Chi tiết tin tức</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:30px;
+    line-height:1.6;
+}
+h1{
+    color:#222;
+}
+.meta{
+    color:gray;
+    margin-bottom:20px;
+}
+.box{
+    background:#f5f5f5;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+a{
+    text-decoration:none;
+    color:blue;
+}
+a:hover{
+    text-decoration:underline;
+}
+</style>
+
+</head>
+<body>
+
+<h1 th:text="${tin.tieuDe}"></h1>
+
+<p class="meta">
+    Ngày đăng:
+    <span th:text="${#temporals.format(tin.ngayDang,'dd/MM/yyyy HH:mm')}"></span>
+</p>
+
+<p class="meta">
+    Loại tin:
+    <span th:text="${tin.loaiTinTuc.tenLoai}"></span>
+</p>
+
+<p><b>Nội dung:</b></p>
+
+<div class="box" th:text="${tin.noiDung}"></div>
+
+<br>
+
+<a th:href="@{/}">← Quay lại trang chủ</a>
+
+</body>
+</html>

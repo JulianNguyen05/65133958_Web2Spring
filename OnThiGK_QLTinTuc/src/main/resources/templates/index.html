@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Trang chủ tin tức</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 30px;
+}
+h1 {
+	color: #333;
+}
+.news-item {
+	border-bottom: 1px solid #ccc;
+	padding: 15px 0;
+}
+.news-item a {
+	text-decoration: none;
+	color: #0066cc;
+	font-size: 20px;
+	font-weight: bold;
+}
+.news-item a:hover {
+	color: red;
+}
+.time {
+	color: gray;
+	font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+	<h1>Danh sách tin tức</h1>
+
+	<div th:each="tin : ${tintucs}" class="news-item">
+		<a th:href="@{/tintuc/{id}(id=${tin.id})}" th:text="${tin.tieuDe}"></a>
+		<p th:text="${tin.noiDung}"></p>
+		<p class="time" th:text="${tin.ngayDang}"></p>
+	</div>
+
+</body>
+</html>
