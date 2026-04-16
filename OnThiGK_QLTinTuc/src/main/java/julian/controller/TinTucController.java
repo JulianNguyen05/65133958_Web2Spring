@@ -21,7 +21,7 @@ public class TinTucController {
 	}
 
 	@GetMapping("/tintuc/{id}")
-	public String chiTiet(@PathVariable Integer id, Model model) {
+	public String chiTiet(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("tin", tinTucService.findById(id));
 		return "chitiet";
 	}
