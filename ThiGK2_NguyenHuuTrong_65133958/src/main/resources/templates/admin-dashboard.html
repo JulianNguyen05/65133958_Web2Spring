@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Quản Trị</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center py-10">
+
+    <div class="w-full max-w-5xl px-4 fade-in">
+        <div class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900">Hệ Thống Quản Trị</h1>
+            <p class="text-gray-500 mt-2">Chọn chức năng bạn muốn thao tác bên dưới</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a href="/admin/san-pham" class="block bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="package" class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Quản lý Sản Phẩm</h2>
+                <p class="text-gray-500">Thêm, sửa, xóa và theo dõi danh sách các sản phẩm trong hệ thống.</p>
+            </a>
+
+            <a href="/admin/loai-san-pham" class="block bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
+                    <i data-lucide="tags" class="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Danh Mục Loại</h2>
+                <p class="text-gray-500">Quản lý các nhóm và phân loại sản phẩm để dễ dàng tra cứu.</p>
+            </a>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
