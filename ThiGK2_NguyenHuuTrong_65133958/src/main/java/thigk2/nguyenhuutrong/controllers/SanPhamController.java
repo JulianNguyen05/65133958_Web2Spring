@@ -17,7 +17,7 @@ import thigk2.nguyenhuutrong.services.SanPhamService;
 
 @RestController
 @RequestMapping("/api/admin/san-pham")
-public class AdminController {
+public class SanPhamController {
 
 	@Autowired
 	private SanPhamService sanPhamService;
