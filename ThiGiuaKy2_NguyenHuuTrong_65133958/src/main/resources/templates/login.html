@@ -6,59 +6,158 @@
     <title>Đăng Nhập</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
-        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Inter',sans-serif;
+            min-height:100vh;
+            overflow:hidden;
+            background:
+                radial-gradient(circle at top left,#7c3aed 0%,transparent 35%),
+                radial-gradient(circle at bottom right,#06b6d4 0%,transparent 35%),
+                linear-gradient(135deg,#111827,#1e1b4b,#0f172a);
+        }
+
+        .glass{
+            backdrop-filter: blur(18px);
+            background: rgba(255,255,255,0.12);
+            border:1px solid rgba(255,255,255,0.18);
+        }
+
+        .float{
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .fade-in{
+            animation: fadeIn .8s ease;
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        @keyframes float{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-8px);}
+        }
+
+        .glow{
+            box-shadow:0 0 25px rgba(99,102,241,.35);
+        }
+
+        .bubble{
+            position:absolute;
+            border-radius:50%;
+            filter: blur(8px);
+            opacity:.35;
+        }
     </style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen flex items-center justify-center p-4">
 
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8 fade-in">
+<body class="flex items-center justify-center p-4 relative">
+
+    <!-- Background decor -->
+    <div class="bubble w-40 h-40 bg-pink-500 top-10 left-10"></div>
+    <div class="bubble w-52 h-52 bg-cyan-400 bottom-10 right-10"></div>
+    <div class="bubble w-28 h-28 bg-purple-500 top-1/2 left-1/4"></div>
+
+    <!-- Login box -->
+    <div class="w-full max-w-md glass rounded-3xl shadow-2xl p-8 fade-in text-white relative z-10">
+
+        <!-- Header -->
         <div class="text-center mb-8">
-            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-lucide="user" class="w-8 h-8 text-blue-600"></i>
+            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 flex items-center justify-center glow float mb-4">
+                <i data-lucide="shield-user" class="w-10 h-10 text-white"></i>
             </div>
-            <h1 class="text-2xl font-bold text-gray-900">Đăng Nhập Hệ Thống</h1>
-            <p class="text-gray-500 mt-2">Vui lòng nhập thông tin để tiếp tục</p>
+
+            <h1 class="text-3xl font-extrabold tracking-wide">
+                Đăng Nhập
+            </h1>
+
+            <p class="text-gray-200 mt-2 text-sm">
+                Chào mừng quay trở lại hệ thống
+            </p>
         </div>
 
-        <div th:if="${param.error}" class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-6 flex items-center text-sm">
+        <!-- Error -->
+        <div th:if="${param.error}"
+             class="bg-red-500/20 border border-red-300/40 text-red-100 px-4 py-3 rounded-xl mb-6 flex items-center text-sm">
             <i data-lucide="alert-circle" class="w-5 h-5 mr-2"></i>
             Sai tên đăng nhập hoặc mật khẩu!
         </div>
 
+        <!-- Form -->
         <form th:action="@{/login}" method="post">
+
+            <!-- Username -->
             <div class="mb-5">
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Tên đăng nhập</label>
+                <label class="block text-sm font-semibold mb-2 text-gray-100">
+                    Tên đăng nhập
+                </label>
+
                 <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i data-lucide="mail" class="h-5 w-5 text-gray-400"></i>
-                    </div>
-                    <input type="text" name="username" required class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50 focus:bg-white transition-colors" placeholder="Nhập username...">
+                    <i data-lucide="user"
+                       class="w-5 h-5 absolute left-3 top-3.5 text-gray-300"></i>
+
+                    <input type="text"
+                           name="username"
+                           required
+                           placeholder="Nhập username..."
+                           class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-cyan-400 transition">
                 </div>
             </div>
 
+            <!-- Password -->
             <div class="mb-6">
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Mật khẩu</label>
+                <label class="block text-sm font-semibold mb-2 text-gray-100">
+                    Mật khẩu
+                </label>
+
                 <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i data-lucide="lock" class="h-5 w-5 text-gray-400"></i>
-                    </div>
-                    <input type="password" name="password" required class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50 focus:bg-white transition-colors" placeholder="••••••••">
+                    <i data-lucide="lock"
+                       class="w-5 h-5 absolute left-3 top-3.5 text-gray-300"></i>
+
+                    <input type="password"
+                           name="password"
+                           required
+                           placeholder="••••••••"
+                           class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 outline-none focus:ring-2 focus:ring-pink-400 transition">
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex justify-center items-center">
-                Đăng Nhập <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+            <!-- Button -->
+            <button type="submit"
+                    class="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:scale-[1.02] transition duration-300 shadow-lg flex justify-center items-center">
+                Đăng Nhập
+                <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
             </button>
         </form>
-        
-        <div class="mt-6 text-center text-sm text-gray-500">
-            <a th:href="@{/}" class="hover:text-blue-600 transition-colors">Quay lại trang chủ</a>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center text-sm text-gray-200">
+            <a th:href="@{/}" class="hover:text-cyan-300 transition">
+                Quay lại trang chủ
+            </a>
         </div>
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
