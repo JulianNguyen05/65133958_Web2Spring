@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${tin.tieuDe}">Chi tiết tin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center py-10">
+
+    <div class="w-full max-w-4xl px-4 fade-in">
+        
+        <div class="mb-6">
+            <a th:href="@{/}" class="inline-flex items-center text-gray-500 hover:text-blue-600 transition-colors font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Quay lại trang chủ
+            </a>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 md:p-12 border border-gray-100">
+            <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4" 
+                  th:text="${tin.theLoaiTin.tenLoai}"></span>
+            
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight" th:text="${tin.tieuDe}"></h1>
+            
+            <div class="prose max-w-none text-gray-700 text-lg leading-relaxed whitespace-pre-line" th:text="${tin.noiDung}">
+                </div>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

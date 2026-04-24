@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ Tin Tức</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center py-6">
+
+    <div class="w-full max-w-6xl px-4 fade-in">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex justify-between items-center mb-6">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-500 p-2 rounded-lg text-white shadow-md">
+                    <i data-lucide="newspaper"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-900">Báo Mới 24h</h1>
+            </div>
+            
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg transition-colors flex items-center space-x-2 shadow-sm">
+                    <i data-lucide="log-in" class="w-4 h-4"></i><span>Đăng Nhập</span>
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="flex items-center space-x-4">
+                <span class="text-sm font-medium text-gray-600">Xin chào, <b sec:authentication="name"></b></span>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-5 rounded-lg transition-colors flex items-center space-x-2 shadow-sm">
+                        <i data-lucide="log-out" class="w-4 h-4"></i><span>Đăng Xuất</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 border-b pb-2">Danh Mục Tin</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a th:href="@{/}" class="block px-4 py-2 rounded-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                Tất cả tin tức
+                            </a>
+                        </li>
+                        <li th:each="tl : ${danhSachTheLoai}">
+                            <a th:href="@{/the-loai/{id}(id=${tl.id})}" 
+                               class="block px-4 py-2 rounded-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                               th:text="${tl.tenLoai}">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div th:each="tin : ${danhSachTin}" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-lg hover:-translate-y-1 transition-all group flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold mb-3" 
+                              th:text="${tin.theLoaiTin.tenLoai}"></span>
+                        <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2" th:text="${tin.tieuDe}"></h2>
+                        <p class="text-gray-500 text-sm line-clamp-3 mb-4" th:text="${tin.noiDung}"></p>
+                    </div>
+                    <a th:href="@{/tin-tuc/{id}(id=${tin.id})}" class="text-blue-600 font-medium hover:underline inline-flex items-center">
+                        Xem chi tiết <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+
+                <div th:if="${#lists.isEmpty(danhSachTin)}" class="col-span-full bg-white rounded-2xl shadow-sm p-12 text-center text-gray-500 border border-gray-100">
+                    <i data-lucide="inbox" class="w-12 h-12 mx-auto mb-3 text-gray-300"></i>
+                    <p>Chưa có bài viết nào trong chuyên mục này.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
